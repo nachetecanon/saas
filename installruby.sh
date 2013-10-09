@@ -29,3 +29,4 @@ gem install flog
 gem install flay
 rvm 1.9.3 do gem install jquery-rails
 gem install fakeweb
+ sudo gem install rake
