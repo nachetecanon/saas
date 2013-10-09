@@ -27,6 +27,7 @@ gem install ruby-graphviz
 gem install reek
 gem install flog
 gem install flay
+gem install linecache19
 rvm 1.9.3 do gem install jquery-rails
 gem install fakeweb
  sudo gem install rake
