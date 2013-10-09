@@ -7,6 +7,3 @@ def sum(arr)
   total
 end
 
-puts sum(nil)
-puts sum([1,2,3])
-puts sum([])
