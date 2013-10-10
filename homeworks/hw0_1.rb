@@ -7,3 +7,4 @@ def sum(arr)
   total
 end
 
+puts sum(['a','[b]','[c]'])
