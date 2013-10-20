@@ -5,10 +5,10 @@ class Class
     attr_reader attr_name+"_history" # create bar_history getter
     class_eval %Q{
       def #{attr_name}=(value)
-        if !myarray
-          myarray=Array.new
+        if !@myarray
+          @myarray=Array.new
         end
-        myarray <<  value
+        @myarray <<  value
         @#{attr_name}=value
       end
     }
