@@ -33,15 +33,7 @@ module FunWithStrings
       value=mapa[key]?w:Array.new << w
       mapa[key] =(mapa[key].to_a << value).flatten
     end
-    total=Array.new(mapa.keys.length)
-    index=0
-    mapa.each_pair do |k,v|
-      total[index]=Array.new
-      total[index]<< v
-      total[index].flatten!
-      index+=1
-    end
-    total
+    mapa.values
   end
 end
 
@@ -52,13 +44,6 @@ class String
 end
 
 
-#puts 'scream cars for four scar creams'.anagram_groups.inspect
-#puts ''.anagram_groups.inspect
-[%w(cars scar), %w(four), %w(for), %w(creams scream)].each do |group|
-  'scream cars for four scar creams'.anagram_groups.each do |e|
-    puts "anagram #{e} -> #{group}"
 
-  end
-end
 
 
