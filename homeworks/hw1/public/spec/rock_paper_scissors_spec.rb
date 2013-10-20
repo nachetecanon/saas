@@ -1,7 +1,7 @@
 require 'rock_paper_scissors'
 require 'debugger'
 
-describe RockPaperScissors, :pending => true do
+describe RockPaperScissors do
   before(:each) do
     @rock = ['Armando','R'] ; @paper = ['Dave','P'] ; @scissors = ['Sam','S']
   end
@@ -24,7 +24,7 @@ describe RockPaperScissors, :pending => true do
       should raise_error(RockPaperScissors::NoSuchStrategyError,
       "Strategy must be one of R,P,S")
   end
-  describe 'tournament' do
+  describe 'tournament'  do
     it 'base case' do
       RockPaperScissors.tournament_winner([@rock,@paper]).should == @paper
     end
