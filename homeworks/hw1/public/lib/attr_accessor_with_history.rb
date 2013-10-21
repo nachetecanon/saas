@@ -5,12 +5,17 @@ class Class
     attr_reader attr_name+"_history" # create bar_history getter
     class_eval %Q{
       def #{attr_name}=(value)
-        if !@myarray
-          @myarray=Array.new
+
+        if !@#{attr_name}_history
+          @#{attr_name}_history=Array.new << @#{attr_name}_previous
+        else
+          @#{attr_name}_history << @#{attr_name}_previous
         end
-        @myarray <<  value
+        @#{attr_name}_previous=value
         @#{attr_name}=value
       end
     }
   end
 end
+
+
