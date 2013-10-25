@@ -20,11 +20,15 @@ class OracleOfBacon
   validate :from_does_not_equal_to
 
   def from_does_not_equal_to
-    # YOUR CODE HERE
+    if @from.present? and @to.present? and @from==@to
+      errors.add(:from,'From cannot be the same as To')
+    end
   end
 
-  def initialize(api_key='')
-    # your code here
+  def initialize(api_key='38b99c9c87')
+    @api_key=api_key
+    @from = 'Kevin Bacon'
+    @to = 'Kevin Bacon'
   end
 
   def find_connections
@@ -59,10 +63,15 @@ class OracleOfBacon
     def parse_response
       if ! @doc.xpath('/error').empty?
         parse_error_response
-      # your code here: 'elsif' clauses to handle other responses
-      # for responses not matching the 3 basic types, the Response
-      # object should have type 'unknown' and data 'unknown response'         
+      elsif ! @doc.xpath('/link').empty? #graph
+        parse_graph
+      elsif ! @doc.xpath('/spellcheck').empty? #spellcheck
+        parse_spellcheck
       end
+    end
+    def parse_graph
+    end
+    def parse_spellcheck
     end
     def parse_error_response
       @type = :error
