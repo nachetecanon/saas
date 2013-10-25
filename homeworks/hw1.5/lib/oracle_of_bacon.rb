@@ -67,16 +67,32 @@ class OracleOfBacon
         parse_graph
       elsif ! @doc.xpath('/spellcheck').empty? #spellcheck
         parse_spellcheck
+      else
+        parse_unknown
       end
     end
     def parse_graph
+      @type = :graph
+      @data = Array.new
+      @doc.xpath('//actor|//movie').children.to_a.each { |t| @data<< "#{t.inner_text}" }
     end
     def parse_spellcheck
+      @type = :spellcheck
+      @data = Array.new
+      @doc.xpath('//match').children.to_a.each { |t| @data<< "#{t.inner_text}" }
     end
     def parse_error_response
       @type = :error
       @data = 'Unauthorized access'
     end
+    def parse_unknown
+      @type = :unknown
+      @data = 'unknown'
+    end
   end
+
 end
+
+
+
 
